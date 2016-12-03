@@ -10,7 +10,7 @@ private val keyarray = arrayListOf('1','2','3','4','5','6','7','8','9','A','B','
 private var finalCode = mutableListOf<Char>()
 
 fun main(args: Array<String>) {
-    val lines = File("src/Day2input.txt").readLines()
+    val lines = File("input/Day2input.txt").readLines()
     lines.forEach(::resolveCode)
     println("The final code is ${finalCode}")
 }
@@ -29,7 +29,7 @@ fun getNextPosition(instructions: MutableList<Direction>) {
     instructions.forEach {
         when(it) {
             Direction.DOWN -> {
-                if(lowermost.contains(keyarray[currentIndex])) {
+                if(keyarray[currentIndex] in lowermost) {
                     println("Staying at position ${currentPosition}")
                     return@forEach
                 }

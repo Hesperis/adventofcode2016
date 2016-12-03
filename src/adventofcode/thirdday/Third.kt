@@ -1,3 +1,5 @@
+package adventofcode.thirdday
+
 import java.io.File
 
 class Third {

@@ -1,3 +1,5 @@
+package adventofcode.secondday
+
 import java.io.File
 
 private var currentPosition = '5'
@@ -9,7 +11,24 @@ private var topmost = listOf<Char>('5','2','1','4','9')
 private val keyarray = arrayListOf('1','2','3','4','5','6','7','8','9','A','B','C','D')
 private var finalCode = mutableListOf<Char>()
 
-fun main(args: Array<String>) {
+class Second {
+    object First {
+        @JvmStatic
+        fun main(args: Array<String>) = first()
+    }
+    object Second {
+        @JvmStatic
+        fun main(args: Array<String>) = second()
+    }
+}
+
+fun first() {
+    val lines = File("input/Day2input.txt").readLines()
+    lines.forEach(::resolveCode)
+    println("The final code is ${finalCode}")
+}
+
+fun second () {
     val lines = File("input/Day2input.txt").readLines()
     lines.forEach(::resolveCode)
     println("The final code is ${finalCode}")

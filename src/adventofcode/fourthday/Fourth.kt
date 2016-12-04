@@ -16,8 +16,8 @@ class Fourth {
 fun first() {
     val lines = File("input/Day4Input.txt").readLines()
     val count = lines
-            .filter { isValidRooms(it)}
-            .map { findSectorIds(it) }
+            .filter(::isValidRooms)
+            .map(::findSectorIds)
             .sum()
     println(count)
 }
@@ -55,9 +55,9 @@ fun findSectorIds(string: String): Int {
 fun second() {
     val lines = File("input/Day4Input.txt").readLines()
     lines
-            .filter { isValidRooms(it) }
-            .map { splitToWordsAndIndexModulator(it) }
-            .map { decrypt(it) }
+            .filter(::isValidRooms)
+            .map(::splitToWordsAndIndexModulator)
+            .map(::decrypt)
             .filter { "north" in it.first }
             .map { println("Room name is ${it.first}, sector id is ${it.second}") }
 }

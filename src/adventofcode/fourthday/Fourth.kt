@@ -72,11 +72,11 @@ fun decrypt(room: Pair<List<String>, Int>): Pair<String, Int> {
     val string = room.first
             .map{
                 it
-                    .toCharArray()
-                    .map {
-                        getCharAtIndex(getIndexforChar(it) + room.second)
-                    }
-                    .joinToString(separator = "")
+                .toCharArray()
+                .map {
+                    getCharAtIndex(getIndexforChar(it) + room.second)
+                }
+                .joinToString(separator = "")
             }.joinToString(separator = " ")
     return Pair(string, room.second)
 }

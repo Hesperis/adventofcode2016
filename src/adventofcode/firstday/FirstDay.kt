@@ -1,6 +1,5 @@
 package adventofcode.firstday
 
-
 private var xCoordinate = 0
 private var yCoordinate = 0
 private var direction = 0
@@ -71,28 +70,28 @@ fun changeCoords(a: Int, b: Int) {
         var j = 0
         if(a > 0) {
             while (k < a) {
-                xCoordinate = xCoordinate.plus(1)
+                xCoordinate +=1
                 checkAndStoreCoordinates()
                 k++
             }
         }
         else if(a < 0) {
             while (k > a) {
-                xCoordinate = xCoordinate.minus(1)
+                xCoordinate -=1
                 checkAndStoreCoordinates()
                 k--
             }
         }
         if(b > 0) {
             while (j < b) {
-                yCoordinate = yCoordinate.plus(1)
+                yCoordinate +=1
                 checkAndStoreCoordinates()
                 j++
             }
         }
         else if (b < 0) {
             while (j > b) {
-                yCoordinate = yCoordinate.minus(1)
+                yCoordinate -=1
                 checkAndStoreCoordinates()
                 j--
             }
@@ -112,7 +111,7 @@ fun changeDirectionLeft() {
 fun checkAndStoreCoordinates() {
     val currentPosition = Pair(xCoordinate, yCoordinate)
     if (visitedLocations.contains(currentPosition) && !firstPosFound) {
-        println("${currentPosition} is the first position to be visited twice")
+        println("$currentPosition is the first position to be visited twice")
         secretCoordinates = currentPosition
         firstPosFound = true
     }

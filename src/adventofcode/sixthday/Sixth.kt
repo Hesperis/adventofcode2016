@@ -16,24 +16,21 @@ class Sixth {
 fun doTheThing(input: String, finderFunction: List<List<Char>>.() -> List<Char>) {
     val lines = File(input).readLines()
     val password: MutableList<Char> = mutableListOf()
-    lines.map {
-        it
-            .trim()
-            .toCharArray()
-            .toList()}
-            .transpose()
-            .map { chars -> chars
-                .groupBy { char -> char }
-                .values
-                .sortedBy { chars -> chars.size }
-                .finderFunction()
-                .first { secret -> password.add(secret) }
-            }
+    lines
+        .map(String::toCharArray)
+        .transpose()
+        .map { chars -> chars
+            .groupBy { char -> char }
+            .values
+            .sortedBy(List<Char>::size)
+            .finderFunction()
+            .first { secret -> password.add(secret) }
+        }
     println(password.joinToString(""))
 }
 
-fun <T> List<List<T>>.transpose(): List<List<T>> {
-    val columns: MutableList<MutableList<T>> = mutableListOf()
+fun List<CharArray>.transpose(): List<List<Char>> {
+    val columns: MutableList<MutableList<Char>> = mutableListOf()
     repeat(this.first().size) { columns.add(mutableListOf()) }
     this.forEach { row -> row.forEachIndexed { index, value -> columns[index].add(value) } }
     return columns

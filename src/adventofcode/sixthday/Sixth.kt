@@ -5,15 +5,15 @@ import java.io.File
 class Sixth {
     object First {
         @JvmStatic
-        fun main(args: Array<String>) = doTheThing(input = "input/Day6TestInput.txt", finderFunction ={last()})
+        fun main(args: Array<String>) = doTheThing(input = "input/Day6TestInput.txt", find ={last()})
     }
     object Second {
         @JvmStatic
-        fun main(args: Array<String>) = doTheThing(input = "input/Day6Input.txt", finderFunction = {first()})
+        fun main(args: Array<String>) = doTheThing(input = "input/Day6Input.txt", find = {first()})
     }
 }
 
-fun doTheThing(input: String, finderFunction: List<List<Char>>.() -> List<Char>) {
+fun doTheThing(input: String, find: List<List<Char>>.() -> List<Char>) {
     val lines = File(input).readLines()
     val password: MutableList<Char> = mutableListOf()
     lines
@@ -23,7 +23,7 @@ fun doTheThing(input: String, finderFunction: List<List<Char>>.() -> List<Char>)
             .groupBy { char -> char }
             .values
             .sortedBy(List<Char>::size)
-            .finderFunction()
+            .find()
             .first { secret -> password.add(secret) }
         }
     println(password.joinToString(""))
